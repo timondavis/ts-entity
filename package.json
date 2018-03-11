@@ -1,0 +1,32 @@
+{
+  "name": "cm-entity",
+  "version": "0.0.1",
+  "description": "Entity framework for low-level use with role-playing games.  This is a concept prototype, not yet ready for use",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "Creative Mutagens <creativemutagens@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "9.3.0",
+    "chai": "^4.1.2",
+    "dice-bag": "0.1.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "lib/*"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "3.5.1",
+    "nodemon": "1.14.11",
+    "ts-node": "4.1.0",
+    "typescript": "2.6.2"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run build:live\" \"npm run build:disk\"",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node ./src/index.ts",
+    "build:disk": "exec tsc -w"
+  }
+}
