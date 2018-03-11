@@ -7,6 +7,5 @@ describe( 'D20CharacterPower', () => {
     it( 'Test it out', () => {
 
         let player = new D20CharacterFactory();
-        player.
     });
 });
