@@ -13,6 +13,7 @@ export class D20CharacterFactory {
         character.setStat( 'WIS', RPGUtil.d( 4, 6 ) );
         character.setStat( 'INT', RPGUtil.d( 4, 6 ) );
         character.setStat( 'CHA', RPGUtil.d( 4, 6 ) );
+        character.setStat( 'AC', 10 );
 
 
         Object.keys( presets ).forEach( function( key: string, index: number ) {

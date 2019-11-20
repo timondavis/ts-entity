@@ -1,9 +1,8 @@
-import { Item } from "./Item";
-export declare class Equipment extends Item {
-    private statusEffects;
-    private type;
-    private equipsTo;
-    constructor();
+import { Equipment } from "./Equipment";
+export declare class EquipmentCollection extends Equipment {
+    private collection;
+    constructor(equipmentCollection: Equipment[]);
+    getStat(name: string): number;
     getType(): string;
     getEquipsTo(): string;
     getStatusEffects(): {
@@ -15,4 +14,8 @@ export declare class Equipment extends Item {
     setStatusEffect(key: string, value: number): Equipment;
     updateStatusEffect(key: string, value: number): Equipment;
     adjustStatusEffect(key: string, value: number): Equipment;
+    add(item: Equipment): Equipment;
+    remove(item: Equipment): Equipment;
+    getCollection(): Equipment[];
+    getAtIndex(index: number): Equipment;
 }

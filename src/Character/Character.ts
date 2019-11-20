@@ -1,13 +1,14 @@
 import {RPGEntity} from "../RPGEntity";
 import {Item} from "../Item/Item";
 import {Equipment} from "../Item/Equipment";
+import {EquipmentCollection} from "../Item/EquipmentCollection";
 
 export class Character extends RPGEntity {
 
     private status: string[] = [];
     private powers: { [key:string] : { ( source: Character, target: Character ) : void } } = {};
     private blockedPowers : string[] = [];
-    private inventory: Item[];
+    private inventory: Item[] = [];
     private equipped: { [key:string] : Equipment } = {};
 
     public getStatus() : string[] {
@@ -23,6 +24,41 @@ export class Character extends RPGEntity {
     public getEquipment() : { [key:string] : Equipment } {
 
         return this.equipped;
+    }
+
+    public getEquippedByLocation( location: string ): Equipment | boolean {
+
+        let current: Equipment;
+
+        Object.keys( this.equipped ).forEach( ( key: string, index: number ) => {
+
+            current = this.equipped[key];
+            if ( current.getEquipsTo() == location ) {
+
+                return current;
+            }
+        });
+
+        return false;
+    }
+
+    public getEquippedCollectionByType( type: string ): EquipmentCollection {
+
+        let equipped = [];
+        let current: Equipment;
+
+
+        Object.keys( this.equipped ).forEach( (key: string, index: number ) =>  {
+
+            current = this.equipped[key];
+
+            if ( current.getType() == type ) {
+
+                equipped.push( current );
+            }
+        });
+
+        return new EquipmentCollection( equipped );
     }
 
     public getInventory() : Item[] {

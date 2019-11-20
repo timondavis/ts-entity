@@ -2,12 +2,24 @@ import {Item} from "./Item";
 
 export class Equipment extends Item {
 
-    private statusEffects : { [key:string] : number };
-    private type : string;
+    private statusEffects : { [key:string] : number } = {};
+    private type : string = "";
+    private equipsTo: string = "";
+
+    public constructor() {
+
+        super();
+        this.canBeEquipped( true );
+    }
 
     public getType(): string {
 
         return this.type;
+    }
+
+    public getEquipsTo() : string {
+
+        return this.equipsTo;
     }
 
     public getStatusEffects() : { [key:string]: number } {
@@ -18,6 +30,12 @@ export class Equipment extends Item {
     public getStatusEffect( key: string ) : number {
 
         return this.statusEffects[key];
+    }
+
+    public setEquipsTo( area: string ) : Equipment {
+
+        this.equipsTo = area;
+        return this;
     }
 
     public setType( type: string ) : Equipment {

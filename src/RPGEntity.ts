@@ -2,9 +2,9 @@ import {Item} from "./Item/Item";
 
 export class RPGEntity {
 
-    private stats : { [key:string] : number };
-    private name: string;
-    private description: string;
+    private stats : { [key:string] : number } = {};
+    private name: string = '';
+    private description: string = '';
 
     private eventCallbacks: { [key:string] : { ( event: string, entities?: RPGEntity[] ): void } };
 
@@ -21,9 +21,13 @@ export class RPGEntity {
         return this.stats;
     }
 
-    public getStat( key: string ): number {
+    public getStat( name: string ) : number {
 
-        return this.stats[key];
+       if ( Object.keys( this.stats ).indexOf( name ) == -1 ) {
+           return null;
+       }
+
+       return this.stats[name];
     }
 
     public setName( name: string ) : RPGEntity {

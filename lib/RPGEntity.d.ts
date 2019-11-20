@@ -8,7 +8,7 @@ export declare class RPGEntity {
     getStats(): {
         [key: string]: number;
     };
-    getStat(key: string): number;
+    getStat(name: string): number;
     setName(name: string): RPGEntity;
     setDescription(description: string): RPGEntity;
     setStat(key: string, value: number): RPGEntity;
